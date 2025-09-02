@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dana-DroughtWatch | Drought Early Warning System</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Load Static Files (Django) -->
+  {% load static %}
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  <!-- Chart.js for Graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Favicon (Optional) -->
+  <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Full-Width Header -->
+  <header>
+    <h1>Dana-DroughtWatch</h1>
+    <p>An Integrated Satellite-Based Early Warning System for Turkana County</p>
+  </header>
+
+  <!-- Main Content - Full Width Sections -->
+  <main>
+
+    <!-- Map Section with Toggle -->
+    <section class="full-width-section">
+      <h2>
+        Drought Risk Map - Turkana County 
+        <button id="toggleMap" aria-label="Collapse map">–</button>
+      </h2>
+      <div id="map"></div>
+    </section>
+
+    <!-- Forecast Section -->
+    <section class="full-width-section light-bg">
+      <h2>3-Month Drought Forecast</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Next Month</h3>
+          <p id="next-month">Severe</p>
+        </div>
+        <div class="card">
+          <h3>+2 Months</h3>
+          <p id="two-months">Moderate</p>
+        </div>
+        <div class="card">
+          <h3>+3 Months</h3>
+          <p id="three-months">Normal</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="full-width-section">
+      <h2>Historical Trends (2010–2023)</h2>
+      <canvas id="trendChart"></canvas>
+    </section>
+
+    <!-- About Section -->
+    <section class="full-width-section dark-bg" id="about">
+      <h2>About the Project</h2>
+      <p>
+        Dana-DroughtWatch is a machine learning-enhanced drought early warning system developed by 
+        <strong>Samuel Muturi Njeri</strong>, a final-year BSc. Geospatial Information Science and Remote Sensing student at 
+        <strong>Dedan Kimathi University of Technology</strong>.
+      </p>
+      <p>
+        The system integrates multi-sensor satellite data:
+      </p>
+      <ul>
+        <li><strong>CHIRPS</strong> – for rainfall monitoring</li>
+        <li><strong>MODIS NDVI</strong> – for vegetation health</li>
+        <li><strong>SMAP</strong> – for surface soil moisture</li>
+      </ul>
+      <p>
+        A Combined Drought Index (CDI) is derived from SPI, VCI, and SMI. A <strong>Random Forest model</strong> trained on historical data (2010–2023) predicts drought severity classes (Normal, Moderate, Severe, Extreme) up to <strong>3 months in advance</strong> with <strong>89% accuracy</strong>.
+      </p>
+      <p>
+        Operationalized via an interactive dashboard, Dana-DroughtWatch empowers pastoralists, county governments, and NGOs to make informed decisions on livestock migration, water management, and aid distribution.
+      </p>
+      <p><em>Contact: samuelmuturi2002@gmail.com | 0759529126</em></p>
+    </section>
+
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Custom JS -->
+  <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
